@@ -1,7 +1,5 @@
 package org.example.tableau;
 
-import java.util.Arrays;
-
 public class ValuePossibility {
     private String[][][] tabPossibilitySquare;
 
@@ -9,21 +7,17 @@ public class ValuePossibility {
         this.tabPossibilitySquare = tabPossibilitySquare;
 
         Rule rule = new Rule();
-        ModificationOfPossibilityTab modificationOfPossibilityTab = new ModificationOfPossibilityTab();
+        ModificationTabForDeleteElement modificationTabForDeleteElement = new ModificationTabForDeleteElement();
 
+        String[] possibility = new String[]{"1", "2", "3", "4", "5", "6", "7", "8", "9"};
 
-        for(int i = 0; i < tab.length; i++){
-            String[] possibility = new String[]{"1", "2", "3", "4", "5", "6", "7", "8", "9"};
-
-            if( (tab[column][i].contains("0"))){
-                for(int y = possibility.length; y > 0; y--) {
-                    if((rule.analyseRow(column,possibility[y-1], tab) == true) || (rule.analyseColumn(row,possibility[y-1], tab) == true) || (rule.analyseUnderGrid(row, column, possibility[y-1], tab) == true)){
-
-                        possibility = modificationOfPossibilityTab.newTabPossibility(possibility,possibility[y-1]);
-                    }
+        if( (tab[column][row].contains("0"))){
+            for(int y = possibility.length; y > 0; y--) {
+                if((rule.analyseRow(column,possibility[y-1], tab) == true) || (rule.analyseColumn(row,possibility[y-1], tab) == true) || (rule.analyseUnderGrid(row, column, possibility[y-1], tab) == true)){
+                    possibility = modificationTabForDeleteElement.newTab(possibility,possibility[y-1]);
                 }
-                this.tabPossibilitySquare[column][i] = possibility;
             }
+            this.tabPossibilitySquare[column][row] = possibility;
         }
         return tabPossibilitySquare;
     }
