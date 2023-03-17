@@ -3,8 +3,8 @@ package org.example.tableau;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ModificationOfPossibilityTab {
-    public String[] newTabPossibility(String[] tab, String deleteNumber){
+public class ModificationTabForDeleteElement {
+    public String[] newTab(String[] tab, String deleteNumber){
 
         List<String> myTab = new ArrayList<>();
 
